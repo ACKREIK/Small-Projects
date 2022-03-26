@@ -31,14 +31,7 @@ def setupdownload():
         download(url, name)
 
 
-
 # GUI
-
-
-# this is a function to get the user input from the text input box
-def getInputBoxValue():
-    userInput = url.get()
-    return userInput
 
 
 # this is a function to get the selected radio button value
@@ -47,17 +40,20 @@ def getRadioButtonValue():
     return buttonSelected
 
 
+# this is a function to get the user input from the text input box
+def getInputBoxValue():
+    userInput = url.get()
+    return userInput
+
+
 # this is the function called when the button is clicked
-def downloadyt():
+def btnClickFunction():
     setupdownload()
-    # print('clicked')
 
 
 # this is the function called when the button is clicked
 def opengitrepo():
     webbrowser.open(githuburl)
-    # os.browse(githuburl)
-    # print('clicked')
 
 
 
@@ -68,57 +64,62 @@ fileextension = tk.StringVar()
 
 
 # This is the section of code which creates the main window
-root.geometry('774x505')
-root.configure(background='#7FFFD4')
-root.title('Python Youtube Downloader')
+root.geometry('870x580')
+root.configure(background='#F0F8FF')
+root.title('Python Youtube Downloader 2')
+
+
+# This is the section of code which creates a group of radio buttons
+frame=Frame(root, width=0, height=0, bg='#E0EEEE')
+frame.place(x=585, y=32)
+ARBEES=[
+    ('.MP4 File', '.mp4'),
+    ('.MP3 File', '.mp3'),
+]
+for text, mode in ARBEES:
+    fileextensionselecter=Radiobutton(frame, text=text, variable=fileextension, value=mode, bg='#E0EEEE', font=('arial', 24, 'normal')).pack(side='top', anchor = 'w')
 
 
 # This is the section of code which creates a text input box
 url=Entry(root)
-url.place(x=20, y=34)
-
-
-# This is the section of code which creates a group of radio buttons
-frame=Frame(root, width=0, height=0, bg='#76EEC6')
-frame.place(x=155, y=34)
-ARBEES=[
-    ('.MP3', '.mp3'),
-    ('.MP4', '.mp4'),
-]
-for text, mode in ARBEES:
-    filetype=Radiobutton(frame, text=text, variable=fileextension, value=mode, bg='#76EEC6', font=('arial', 12, 'normal')).pack(side='top', anchor = 'w')
+url.place(x=445, y=82)
 
 
 # This is the section of code which creates the a label
-Label(root, text='Python', bg='#7FFFD4', font=('helvetica', 120, 'normal')).place(x=256, y=17)
+Label(root, text='Python', bg='#F0F8FF', font=('arial', 50, 'normal')).place(x=15, y=12)
 
 
 # This is the section of code which creates the a label
-Label(root, text='Youtube', bg='#7FFFD4', font=('helvetica', 100, 'normal')).place(x=264, y=152)
+Label(root, text='Youtube', bg='#F0F8FF', font=('arial', 50, 'normal')).place(x=15, y=112)
 
 
 # This is the section of code which creates the a label
-Label(root, text='Downloader', bg='#7FFFD4', font=('helvetica', 80, 'normal')).place(x=190, y=250)
+Label(root, text='Downloader', bg='#F0F8FF', font=('arial', 80, 'normal')).place(x=5, y=212)
+
+
+# This is the section of code which creates the a label
+Label(root, text='Instructions: Put in url, select format, hit download.', bg='#F0F8FF', font=('arial', 20, 'normal')).place(x=5, y=542)
+
+
+# This is the section of code which creates the a label
+Label(root, text='0.9.1', bg='#F0F8FF', font=('arial', 20, 'normal')).place(x=805, y=552)
+
+
+# This is the section of code which creates the a label
+# This is the section of code which creates the a label
+Label(root, text='Link:', bg='#F0F8FF', font=('arial', 20, 'normal')).place(x=445, y=42)
+
+
+# This is the section of code which creates the a label
+Label(root, text='Format', bg='#F0F8FF', font=('arial', 30, 'normal')).place(x=585, y=162)
 
 
 # This is the section of code which creates a button
-Button(root, text='DOWNLOAD!', bg='#76EEC6', font=('helvetica', 20, 'normal'), command=downloadyt).place(x=15, y=107)
-
-
-# This is the section of code which creates the a label
-Label(root, text='URL', bg='#7FFFD4', font=('helvetica', 20, 'normal')).place(x=25, y=58)
-
-
-# This is the section of code which creates the a label
-Label(root, text='File Type', bg='#7FFFD4', font=('helvetica', 15, 'normal')).place(x=66, y=85)
-
-
-# This is the section of code which creates the a label
-Label(root, text='V 0.8.3', bg='#7FFFD4', font=('helvetica', 15, 'normal')).place(x=701, y=480)
+Button(root, text='Download!', bg='#C1CDCD', font=('arial', 20, 'normal'), command=btnClickFunction).place(x=405, y=142)
 
 
 # This is the section of code which creates a button
-Button(root, text='Open Github Repo', bg='#76EEC6', font=('helvetica', 15, 'normal'), command=opengitrepo).place(x=7, y=455)
+Button(root, text='Open GitHub', bg='#838B8B', font=('arial', 20, 'normal'), command=opengitrepo).place(x=5, y=482)
 
 
 root.mainloop()
